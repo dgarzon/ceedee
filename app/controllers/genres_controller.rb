@@ -25,6 +25,7 @@ class GenresController < ApplicationController
   # POST /genres.json
   def create
     @genre = Genre.new(genre_params)
+    @genre.id = Genre.last.id + 1
 
     respond_to do |format|
       if @genre.save
@@ -69,6 +70,6 @@ class GenresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def genre_params
-      params.require(:genre).permit(:genre_id, :genre_name)
+      params.require(:genre).permit(:genre_name)
     end
 end

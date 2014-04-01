@@ -164,6 +164,7 @@ DEPENDENCIES
   erb2haml
   font-awesome-rails
   google-webfonts
+  haml
   hirb
   jbuilder (~> 1.2)
   jquery-rails

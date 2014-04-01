@@ -9,6 +9,9 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# HAML
+gem 'haml'
+
 # Bootstrap 3.1.1 SASS
 gem 'bootstrap-sass', '~> 3.1.1'
 
