@@ -3,10 +3,10 @@
   %thead
     %tr
       %th Album name
-      %th User
-      / %th Comment
-      / %th Genre
+      %th Artist
       %th Rating
+      %th User
+      %th Comment title
       / %th Band
       %th
       %th
@@ -15,11 +15,10 @@
     - @albums.each do |album|
       %tr
         %td= album.album_name
-        %td= album.user.user_name
-        / %td= album.comment
-        / %td= album.genre
+        %td= album.band.band_name
         %td= album.rating.rating_value
-        / %td= album.band
+        %td= album.user.user_name
+        %td= album.comment.comment_title
         %td= link_to 'Show', album
         %td= link_to 'Edit', edit_album_path(album)
         %td= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }
