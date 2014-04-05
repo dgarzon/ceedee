@@ -12,7 +12,7 @@
 
     %nav
       = render 'layouts/nav'
-      - if params[:controller] != "welcome"
+      - if !controller?("welcome")
         = render 'layouts/subnav'
     %div.container#main
       = render 'layouts/notice'

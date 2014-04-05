@@ -24,7 +24,8 @@
       color: $clouds;
       line-height: 40px;
       text-indent: 20px;
-      padding: 0 10px;
+      padding-right: 20px;
+      padding-left: 0px;
 
       a {
         color: $clouds;
@@ -35,6 +36,10 @@
           text-decoration: none;
         }
       }
+    }
+
+    li.selected {
+      background-color: $brand-primary;
     }
   }
 }
