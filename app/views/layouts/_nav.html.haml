@@ -15,7 +15,7 @@
       %ul.nav.navbar-nav.navbar-right
         - if @user
           %li.user-info
-            = link_to @user.user_name, root_path
+            = link_to "#{@user.user_name}", :controller => "home", :user_id => @user.id
           %li.divider-vertical
         %li.dropdown.pull-right
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
