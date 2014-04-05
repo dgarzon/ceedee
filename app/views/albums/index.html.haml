@@ -4,10 +4,10 @@
     %tr
       %th Album name
       %th User
-      %th Comment
-      %th Genre
+      / %th Comment
+      / %th Genre
       %th Rating
-      %th Band
+      / %th Band
       %th
       %th
       %th
@@ -18,7 +18,7 @@
         %td= album.user.user_name
         / %td= album.comment
         / %td= album.genre
-        / %td= album.rating
+        %td= album.rating.rating_value
         / %td= album.band
         %td= link_to 'Show', album
         %td= link_to 'Edit', edit_album_path(album)
