@@ -1,0 +1,11 @@
+= simple_form_for(@album) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :album_name
+    = f.association :user
+    = f.association :comment
+    = f.association :genre
+    = f.association :rating
+    = f.association :band
+  .form-actions
+    = f.button :submit

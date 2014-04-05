@@ -3,7 +3,19 @@
   %head
     %title CeeDee
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = google_webfonts_link_tag :dosis => [500, 600]
+    = google_webfonts_link_tag :open_sans => [400]
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = yield
+    %header
+
+    %nav
+      = render 'layouts/nav'
+      - if params[:controller] != "welcome"
+        = render 'layouts/subnav'
+    %div.container#main
+      = render 'layouts/notice'
+      = yield
+    %footer
+      = render 'layouts/footer'

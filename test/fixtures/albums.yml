@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  album_name: MyString
+  user_id: 
+  comment_id: 
+  genre_id: 
+  rating_id: 
+  band_id: 
+
+two:
+  album_name: MyString
+  user_id: 
+  comment_id: 
+  genre_id: 
+  rating_id: 
+  band_id: 

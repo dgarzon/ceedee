@@ -1,0 +1,40 @@
+@import 'partials/colors';
+
+#sub-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  width: 100%;
+  background: lighten($brand-primary, 5%);
+  height: 40px;
+
+  .subnav-nav {
+    position: relative;
+    margin: 0 auto;
+    width: 380px;
+    height: 40px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+
+    li {
+      display: inline-block;   /* You can also add some margins here to make it look prettier */
+      zoom:1;
+      *display:inline; /* this fix is needed for IE7- */
+      color: $clouds;
+      line-height: 40px;
+      text-indent: 20px;
+      padding: 0 10px;
+
+      a {
+        color: $clouds;
+        text-decoration: none;
+
+        &:hover {
+          color: darken($clouds, 10%);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

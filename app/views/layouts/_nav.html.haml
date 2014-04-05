@@ -1,0 +1,27 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to root_path, :class => "navbar-brand" do
+        %i.fa.fa-music
+        %span.brand-text Ceedee
+    / Collect the nav links, forms, and other content for toggling
+    #nav-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if @user
+          %li.user-info
+            = link_to @user.user_name, root_path
+          %li.divider-vertical
+        %li.dropdown.pull-right
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            %i.fa.fa-user
+            %b.caret
+          %ul.dropdown-menu
+            - @users.each do |user|
+              %li
+                = link_to "#{user.user_name}", :controller => "home", :user_id => user.id

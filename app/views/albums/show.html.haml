@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Album name:
+  = @album.album_name
+%p
+  %strong User:
+  = @album.user
+%p
+  %strong Comment:
+  = @album.comment
+%p
+  %strong Genre:
+  = @album.genre
+%p
+  %strong Rating:
+  = @album.rating
+%p
+  %strong Band:
+  = @album.band
+= link_to 'Edit', edit_album_path(@album)
+|
+\#{link_to 'Back', albums_path}
