@@ -68,6 +68,9 @@ GEM
       haml (>= 4.0.0.rc.1)
       hpricot (~> 0.8.6)
       ruby_parser (~> 3.1.1)
+    httparty (0.13.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -79,11 +82,13 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta-spotify (0.3.2)
+      httparty (> 0.8)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    multi_xml (0.5.5)
     orm_adapter (0.5.0)
-    pg (0.17.1)
     polyglot (0.3.4)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -168,7 +173,7 @@ DEPENDENCIES
   hirb
   jbuilder (~> 1.2)
   jquery-rails
-  pg
+  meta-spotify
   quiet_assets
   rails (= 4.0.0)
   ruby-oci8

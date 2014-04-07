@@ -1,9 +1,7 @@
 CeeDee::Application.routes.draw do
+  get "search/index"
   get "welcome/index"
-  resources :albums
-
   get "home/index"
-  resources :genres
 
   resources :users do
     resources :albums

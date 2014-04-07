@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use pg as the database for Heroku
-gem 'pg'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -55,6 +52,9 @@ gem 'devise'
 # Oracle Enhanced
 gem 'ruby-oci8'
 gem "activerecord-oracle_enhanced-adapter", "~> 1.5.0"
+
+# Spotify API
+gem 'meta-spotify'
 
 group :development do
   gem "wirble"

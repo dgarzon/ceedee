@@ -7,6 +7,7 @@
       %th Rating
       %th User
       %th Comment title
+      %th Genre
       / %th Band
       %th
       %th
@@ -19,8 +20,9 @@
         %td= album.rating.rating_value
         %td= album.user.user_name
         %td= album.comment.comment_title
-        %td= link_to 'Show', album
-        %td= link_to 'Edit', edit_album_path(album)
-        %td= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= album.genre.genre_name
+        %td= link_to 'Show', [@user, album]
+        %td= link_to 'Edit', edit_user_album_path(@user, album)
+        %td= link_to 'Destroy', [@user, album], method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= link_to 'New Album', new_album_path
+= link_to 'New Album', new_user_album_path(@user)
