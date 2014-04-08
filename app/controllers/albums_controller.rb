@@ -1,11 +1,11 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
-  before_action :load_user, only: [:index]
+  before_action :load_user
 
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.where("user_id" => @user.id)
+    @albums = @user.albums.all
   end
 
   # GET /albums/1
@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @album = Album.new
+    @album = @user.albums.new
   end
 
   # GET /albums/1/edit
@@ -25,7 +25,9 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
+    logger.debug params[:album][:spotify_id]
+    logger.debug params[:album][:query]
+    @album = @user.albums.create_from_spotify(params[:album][:spotify_id])
 
     respond_to do |format|
       if @album.save
@@ -69,7 +71,11 @@ class AlbumsController < ApplicationController
     end
 
     def load_user
-      @user = User.find(params[:user_id])
+      if params[:search]
+        @user = User.find(params[:search][:user_id])
+      else
+        @user = User.find(params[:user_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

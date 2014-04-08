@@ -18,7 +18,7 @@
             = link_to "#{@user.user_name}", :controller => "home", :user_id => @user.id
           %li.divider-vertical
           %li.add-album
-            = link_to search_index_path do
+            = link_to new_user_album_path(@user) do
               %i.fa.fa-plus
               %span.brand-text Add Album
           %li.divider-vertical

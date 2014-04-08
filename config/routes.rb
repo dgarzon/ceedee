@@ -4,7 +4,9 @@ CeeDee::Application.routes.draw do
   get "home/index"
 
   resources :users do
-    resources :albums
+    resources :albums do
+      # get 'search', :on => :collection
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
