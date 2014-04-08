@@ -1,6 +1,7 @@
 @import 'partials/colors';
 @import "partials/variables";
 @import "font-awesome";
+@import "compass/css3/border-radius";
 
 body {
   background-color: $clouds;
@@ -52,25 +53,16 @@ body {
   display: none;
   min-width: 160px;
   _width: 160px;
-  padding: 0 0;
-  margin: 0 0 0 0;
+  padding: 4px 0;
   list-style: none;
   background-color: #ffffff;
-  border-color: #ccc;
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: $gray-light;
   border-style: solid;
   border-width: 1px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
+
+  @include border-corner-radius(top, right, 5px);
+  @include border-corner-radius(bottom, right, 5px);
+  @include border-corner-radius(bottom, left, 5px);
 
   .ui-menu-item > a.ui-corner-all {
     display: block;

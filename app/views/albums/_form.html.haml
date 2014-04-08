@@ -26,6 +26,12 @@
             }));
           });
       },
+      open: function(event, ui) {
+        console.log("Opened");
+        $('ul.ui-autocomplete').css('left',
+          function(index, value) {return 8 + parseInt(value)
+        });
+      },
       select: function (e, ui) {
         e.preventDefault();
         $('#spotify-id').val(ui.item.album.href);
