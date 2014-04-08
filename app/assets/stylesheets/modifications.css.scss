@@ -52,7 +52,7 @@ body {
   display: none;
   min-width: 160px;
   _width: 160px;
-  padding: 4px 0;
+  padding: 0 0;
   margin: 0 0 0 0;
   list-style: none;
   background-color: #ffffff;
@@ -78,9 +78,9 @@ body {
     clear: both;
     font-weight: normal;
     line-height: 18px;
-    color: #555555;
+    color: $gray;
     white-space: nowrap;
-    min-height: 60px;
+    min-height: 50px;
 
     &:hover {
       color: $gray-dark;
@@ -107,4 +107,49 @@ body {
 .well-search {
   max-width: 600px;
   margin: 0 auto;
+}
+
+.ui-autocomplete {
+  vertical-align:middle;
+
+  .ui-menu-item {
+    vertical-align:middle;
+    border-bottom: 1px solid $gray-lighter;
+
+    .ui-autocomplete-icon {
+      vertical-align:middle;
+
+      i {
+          display:inline-block;
+          font-size: 2em;
+          line-height: 2em;
+          text-align: center;
+          vertical-align: bottom;
+          color: $brand-success;
+      }
+    }
+
+    .ui-autocomplete-artist {
+      font-weight: bold;
+      font-size: 1.2em;
+      height:55px;
+      line-height:55px;
+      padding-left: 0.6em;
+    }
+
+    .ui-autocomplete-album-name {
+      font-size: 1.2em;
+      height:55px;
+      line-height:55px;
+    }
+
+    .ui-autocomplete-divider {
+      padding-right: 0.5em;
+      padding-left: 0.5em;
+
+      i {
+        font-size: 0.7em;
+      }
+    }
+  }
 }

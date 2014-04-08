@@ -22,23 +22,14 @@
             })
           ).then(function (data) {
             process($.map(data.albums.slice(0, 4), function(item) {
-              // $.when (
-              //   $.ajax({
-              //       url: 'https://embed.spotify.com/oembed/?url=' + item.href,
-              //       dataType: 'jsonp'
-              //   })
-              // ).then(function (image) {
-                // Input: The Rolling Stones
-                // console.log(item.artists[0].name + ' - ' + item.name + ': ' + image.thumbnail_url);
-                // Console: The Rolling Stones - Let It Bleed: https://d3rt1990lpmkn.cloudfront.net/cover/91205a1c80960d7055f8ed1bbe022f195e1767a4
-                return { label: item.artists[0].name + ' - ' + item.name, album: item, href: item.href};
-              // });
+              return { artist: item.artists[0].name, album_name: item.name, album: item, label: item.artists[0].name + '  -  ' + item.name };
             }));
           });
       },
       select: function (e, ui) {
-        console.log("selected= " + ui.item.href);
-        $('#spotify-id').val(ui.item.href);
+        e.preventDefault();
+        $('#spotify-id').val(ui.item.album.href);
+        $(this).val(ui.item.label);
       },
       messages: {
         noResults: '',
@@ -46,10 +37,9 @@
       }
     })
     .data('ui-autocomplete')._renderItem = function(ul, item) {
-      return $('<li></li>')
+      return $('<li>')
           .data( "ui-autocomplete-item", item)
-          // .append('<a>' + item.label + '<img src="' + item.image + '" alt="" />' + '</a>')
-          .append('<a>' + item.label  + '</a>')
+          .append('<a>' + '<span class="ui-autocomplete-icon"><i class="fa fa-plus-circle fa-2x"></i></span>' + '<span class="ui-autocomplete-artist">' + item.artist  + '</span>' + '<span class="ui-autocomplete-divider"><i class="fa fa-minus"></i></span>' + '<span class="ui-autocomplete-album-name">' + item.album_name  + '</span>' + '</a>')
           .appendTo(ul);
     };
   });
