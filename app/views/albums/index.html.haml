@@ -43,3 +43,45 @@
 /         %td= link_to 'Destroy', [@user, album], method: :delete, data: { confirm: 'Are you sure?' }
 / %br/
 / = link_to 'New Album', new_user_album_path(@user)
+:coffee
+  $ ->
+    onResize = ->
+      outsideSize = getSize($container.parent()[0]).innerWidth
+      cols = Math.floor(outsideSize / (columnWidth))
+
+      # set container width to columns
+      if cols != 1
+        $container.width cols * columnWidth - gutter
+      else
+        $container.width cols * columnWidth - 20
+
+      # manually trigger layout
+      $container.packery()
+      return
+
+    $container = $(".packery")
+    # initialize Packery after all images have loaded
+    $container.imagesLoaded ->
+      $container.packery
+        itemSelector: ".item"
+        transitionDuration: "0.8s"
+        columnWidth: 300
+        gutter: 20
+        isResizeBound: false
+
+      return
+    pckry = $container
+    gutter = 20 or 0
+    columnWidth = 320
+
+    # debounce resize event
+    resizeTimeout = undefined
+    $(window).on "resize", ->
+      clearTimeout resizeTimeout  if resizeTimeout
+      resizeTimeout = setTimeout(onResize, 100)
+      return
+
+
+    # initial trigger
+    onResize()
+    return
