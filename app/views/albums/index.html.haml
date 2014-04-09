@@ -1,28 +1,44 @@
-%h1 Listing albums
-%table
-  %thead
-    %tr
-      %th Album name
-      %th Artist
-      %th Rating
-      %th User
-      %th Comment title
-      %th Genre
-      / %th Band
-      %th
-      %th
-      %th
-  %tbody
-    - @albums.each do |album|
-      %tr
-        %td= album.album_name
-        //%td= album.band.band_name
-        //%td= album.rating.rating_value
-        %td= album.user.user_name
-        //%td= album.comment.comment_title
-        //%td= album.genre.genre_name
-        %td= link_to 'Show', [@user, album]
-        %td= link_to 'Edit', edit_user_album_path(@user, album)
-        %td= link_to 'Destroy', [@user, album], method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Album', new_user_album_path(@user)
+- @albums.each do |album|
+  .item
+    = link_to [@user, album] do
+      %h2.album-name= album.album_name
+      %h3.album-artist= album.band.band_name
+      .item-image
+        %img(src="#{album.image_url}")
+      %ul.item-subnav.pull-right
+        %li.item-tracks
+          %i.fa.fa-music
+          %span.item-track-count= album.tracks.last.track_number
+        %li.item-rating
+          %i.fa.fa-star
+          %pan.item-track-rating= album.rating.rating_value
+
+
+/ %h1 Listing albums
+/ %table
+/   %thead
+/     %tr
+/       %th Album name
+/       %th Artist
+/       %th Rating
+/       %th User
+/       %th Comment title
+/       %th Genre
+/       / %th Band
+/       %th
+/       %th
+/       %th
+/   %tbody
+/     - @albums.each do |album|
+/       %tr
+/         %td= album.album_name
+/         //%td= album.band.band_name
+/         //%td= album.rating.rating_value
+/         %td= album.user.user_name
+/         //%td= album.comment.comment_title
+/         //%td= album.genre.genre_name
+/         %td= link_to 'Show', [@user, album]
+/         %td= link_to 'Edit', edit_user_album_path(@user, album)
+/         %td= link_to 'Destroy', [@user, album], method: :delete, data: { confirm: 'Are you sure?' }
+/ %br/
+/ = link_to 'New Album', new_user_album_path(@user)

@@ -6,13 +6,19 @@
 
 body {
   background-color: $clouds;
+  color: $gray;
 }
 
 @import "bootstrap";
 
+.navbar {
+  margin-bottom: 0px;
+}
+
+
 // Container
 .container {
-  margin-top: 40px;
+  margin-top: 60px;
   padding-top: 20px;
 }
 

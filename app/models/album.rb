@@ -17,12 +17,6 @@ class Album < ActiveRecord::Base
                          :album_name => response.name,
                          :album_id => Album.last.id + 1)
 
-    # album.save!
-
-    # if !album.persisted?
-    #   redirect_to :back, alert: "Something went wrong, please try again."
-    # end
-
     genre = Genre.where(:genre_name => genre_val).first
 
     if genre.nil?

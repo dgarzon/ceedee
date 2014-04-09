@@ -1,3 +1,36 @@
 // Place all the styles related to the albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "partials/colors";
+
+.item {
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+  background: #fff;
+
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-dark;
+      text-decoration: none;
+    }
+  }
+  .album-artist {
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+    padding-left: 0.4em;
+  }
+  .album-name {
+    padding-left: 0.3em;
+  }
+  .item-subnav {
+    padding-top: 10px;
+    font-size: 1.1em;
+    li {
+      display: inline;
+      list-style-type: none;
+      padding-right: 20px;
+    }
+  }
+}

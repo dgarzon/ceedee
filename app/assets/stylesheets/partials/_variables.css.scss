@@ -18,11 +18,13 @@ $headings-font-weight:    500;
 // Scaffolds
 //
 $body-bg: $clouds;
+$text-color:            $gray;
 
 //
 // Navbar
 //
 $navbar-border-radius:             0px;
+$navbar-default-border: none;
 $navbar-default-color:             $clouds;
 $navbar-default-bg:                $brand-primary;
 
