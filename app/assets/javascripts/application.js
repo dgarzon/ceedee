@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require jquery.ui.autocomplete
 //= require bootstrap
+//= require eventEmitter/EventEmitter.js
+//= require eventie/eventie.js
+//= require imagesloaded/imagesloaded.js
 //= require twitter/typeahead
 //= require turbolinks
 //= require_tree .

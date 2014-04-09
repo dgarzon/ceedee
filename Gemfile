@@ -17,6 +17,8 @@ gem 'twitter-typeahead-rails'
 # Font Awesome
 gem "font-awesome-rails"
 
+gem 'bower-rails'
+
 # Google Web Fonts
 gem 'google-webfonts'
 
