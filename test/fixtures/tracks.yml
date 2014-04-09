@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  track_name: MyString
+  track_number: 1
+  track_duration: 1.5
+  album_id: 
+
+two:
+  track_name: MyString
+  track_number: 1
+  track_duration: 1.5
+  album_id: 

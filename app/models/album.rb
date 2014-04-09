@@ -4,8 +4,9 @@ class Album < ActiveRecord::Base
   belongs_to :genre
   has_one :rating
   belongs_to :band
+  has_many :tracks
 
-  attr_accessor :query
+  attr_accessor :query, :genre_query, :rating_query, :comment_query
 
   def self.create_from_spotify (spotify_id, image_url, user_id)
 
@@ -35,6 +36,19 @@ class Album < ActiveRecord::Base
     logger.debug band.inspect
 
     album.band_id = band.id
+
+    response.tracks.each do |track|
+      logger.debug track.name
+      logger.debug track.track_number
+      logger.debug track.length
+      song = Track.create(:track_id => Track.last.id + 1,
+                          :album_id => album.id,
+                          :track_name => track.name,
+                          :track_duration => track.length,
+                          :track_number => track.track_number)
+
+      song.save!
+    end
 
     album
 

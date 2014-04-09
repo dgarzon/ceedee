@@ -17,3 +17,6 @@
   %strong Band:
   = @album.band
 
+- @album.tracks.each do |track|
+  = track.track_name
+
