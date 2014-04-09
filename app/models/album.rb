@@ -8,39 +8,50 @@ class Album < ActiveRecord::Base
 
   attr_accessor :query, :genre_query, :rating_query, :comment_query
 
-  def self.create_from_spotify (spotify_id, image_url, user_id)
-
+  def self.create_from_spotify (spotify_id, image_url, user_id, rating_val, comment_val, genre_val)
     response = MetaSpotify::Album.lookup(spotify_id, :extras => 'trackdetail')
 
     album = Album.create(:spotify_id => spotify_id,
                          :image_url => image_url,
-                         :genre_id => 1,
                          :user_id => user_id,
                          :album_name => response.name,
                          :album_id => Album.last.id + 1)
 
-    album.save!
+    # album.save!
 
-    if !album.persisted?
-      redirect_to :back, alert: "Something went wrong, please try again."
+    # if !album.persisted?
+    #   redirect_to :back, alert: "Something went wrong, please try again."
+    # end
+
+    genre = Genre.where(:genre_name => genre_val).first
+
+    if genre.nil?
+      genre = Genre.create(:genre_id => Genre.last.id + 1, :genre_name => genre_val)
+      genre.save!
     end
 
-    band = Band.where(:band_name => response.artists[0].name)
+    album.genre_id = genre.id
 
-    if band.nil? || band.empty?
-      logger.debug "Band not found.. Proceed to create!"
+    rating = Rating.create(:rating_id => Rating.last.id + 1, :rating_value => rating_val, :album_id => album.id)
+    rating.save!
+
+    album.rating_id = rating.id
+
+    comment = Comment.create(:comment_id => Comment.last.id + 1, :comment_description => comment_val, :album_id => album.id, :user_id => user_id)
+    comment.save!
+
+    album.comment_id = comment.id
+
+    band = Band.where(:band_name => response.artists[0].name).first
+
+    if band.nil?
       band = Band.create(:band_id => Band.last.id + 1, :band_name => response.artists[0].name)
       band.save!
     end
 
-    logger.debug band.inspect
-
     album.band_id = band.id
 
     response.tracks.each do |track|
-      logger.debug track.name
-      logger.debug track.track_number
-      logger.debug track.length
       song = Track.create(:track_id => Track.last.id + 1,
                           :album_id => album.id,
                           :track_name => track.name,
@@ -51,6 +62,5 @@ class Album < ActiveRecord::Base
     end
 
     album
-
   end
 end

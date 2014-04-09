@@ -6,12 +6,15 @@ class AlbumsController < ApplicationController
   # GET /albums.json
   def index
     @albums = Album.where(:user_id => @user.id)
-    logger.debug @albums.inspect
   end
 
   # GET /albums/1
   # GET /albums/1.json
   def show
+    logger.debug params
+    # @genre = Genre.where(:album_id => params[:album_id]).first
+    @comment = Comment.where(:album_id => params[:id]).first
+    @rating = Rating.where(:album_id => params[:id]).first
   end
 
   # GET /albums/new
@@ -26,7 +29,7 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.create_from_spotify(params[:album][:spotify_id], params[:album][:image_url], @user.id)
+    @album = Album.create_from_spotify(params[:album][:spotify_id], params[:album][:image_url], @user.id, params[:album][:rating_query], params[:album][:comment_query], params[:album][:genre_query])
 
     respond_to do |format|
       if @album.save

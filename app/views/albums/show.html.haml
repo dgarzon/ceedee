@@ -3,19 +3,19 @@
   = @album.album_name
 %p
   %strong User:
-  = @album.user
+  = @album.user.user_name
 %p
   %strong Comment:
-  = @album.comment
+  = @album.comment.comment_description
 %p
   %strong Genre:
-  = @album.genre
+  = @album.genre.genre_name
 %p
   %strong Rating:
-  = @album.rating
+  = @album.rating.rating_value
 %p
   %strong Band:
-  = @album.band
+  = @album.band.band_name
 
 - @album.tracks.each do |track|
   = track.track_name
