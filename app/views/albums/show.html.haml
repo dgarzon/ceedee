@@ -1,4 +1,3 @@
-%p#notice= notice
 %p
   %strong Album name:
   = @album.album_name
@@ -17,6 +16,4 @@
 %p
   %strong Band:
   = @album.band
-= link_to 'Edit', edit_album_path(@album)
-|
-\#{link_to 'Back', albums_path}
+

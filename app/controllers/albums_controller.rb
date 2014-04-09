@@ -5,7 +5,8 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = @user.albums.all
+    @albums = Album.where(:user_id => @user.id)
+    logger.debug @albums.inspect
   end
 
   # GET /albums/1
@@ -25,13 +26,11 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    logger.debug params[:album][:spotify_id]
-    logger.debug params[:album][:query]
-    @album = @user.albums.create_from_spotify(params[:album][:spotify_id])
+    @album = Album.create_from_spotify(params[:album][:spotify_id], params[:album][:image_url], @user.id)
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to [@user, @album], notice: 'Album was successfully created.' }
         format.json { render action: 'show', status: :created, location: @album }
       else
         format.html { render action: 'new' }

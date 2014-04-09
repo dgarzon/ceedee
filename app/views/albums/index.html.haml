@@ -17,10 +17,11 @@
       %tr
         %td= album.album_name
         %td= album.band.band_name
-        %td= album.rating.rating_value
+        //%td= album.band.band_name
+        //%td= album.rating.rating_value
         %td= album.user.user_name
-        %td= album.comment.comment_title
-        %td= album.genre.genre_name
+        //%td= album.comment.comment_title
+        //%td= album.genre.genre_name
         %td= link_to 'Show', [@user, album]
         %td= link_to 'Edit', edit_user_album_path(@user, album)
         %td= link_to 'Destroy', [@user, album], method: :delete, data: { confirm: 'Are you sure?' }

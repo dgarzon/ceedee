@@ -65,7 +65,7 @@ body {
   @include border-corner-radius(bottom, right, 5px);
   @include border-corner-radius(bottom, left, 5px);
 
-   @include box-shadow(rgba(0, 0, 0, 0.2) 0px 5px 10px);
+  @include box-shadow(rgba(0, 0, 0, 0.2) 0px 5px 10px);
 
   .ui-menu-item > a.ui-corner-all {
     display: block;
@@ -113,6 +113,7 @@ body {
 
     .ui-autocomplete-icon {
       vertical-align:middle;
+      padding-left: 1em;
 
       i {
           display:inline-block;

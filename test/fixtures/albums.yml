@@ -3,15 +3,15 @@
 one:
   album_name: MyString
   user_id: 
-  comment_id: 
-  genre_id: 
-  rating_id: 
   band_id: 
+  genre_id: 
+  image_url: MyString
+  spotify_id: MyString
 
 two:
   album_name: MyString
   user_id: 
-  comment_id: 
-  genre_id: 
-  rating_id: 
   band_id: 
+  genre_id: 
+  image_url: MyString
+  spotify_id: MyString

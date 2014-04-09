@@ -3,6 +3,7 @@
   %hr
   = simple_form_for [@user, @album] do |f|
     = f.input :spotify_id, :as => :hidden, :input_html => {:id => "spotify-id"}
+    = f.input :image_url, :as => :hidden, :input_html => {:id => "image-url"}
     .input-group.input-group-lg
       %span.input-group-addon
         %i.fa.fa-download
@@ -21,20 +22,27 @@
                 url: 'http://ws.spotify.com/search/1/album.json?q=' + query.term,
             })
           ).then(function (data) {
-            process($.map(data.albums.slice(0, 4), function(item) {
-              return { artist: item.artists[0].name, album_name: item.name, album: item, label: item.artists[0].name + '  -  ' + item.name };
-            }));
+            var process_data = [];
+            $.each(data.albums.slice(0, 4), function(i,item) {
+              $.when (
+               $.ajax({
+                  url: 'https://embed.spotify.com/oembed/?url=' + item.href,
+                  dataType: 'jsonp'
+               })
+              ).then(function (image) {
+                process_data.push( { artist: item.artists[0].name, album_name: item.name, label: item.artists[0].name + ' - ' + item.name, album: item, href: item.href, image: image.thumbnail_url.replace("cover", "60")} );
+                process( process_data );
+              });
+            });
           });
       },
       open: function(event, ui) {
-        console.log("Opened");
-        $('ul.ui-autocomplete').css('left',
-          function(index, value) {return 8 + parseInt(value)
-        });
+
       },
       select: function (e, ui) {
         e.preventDefault();
-        $('#spotify-id').val(ui.item.album.href);
+        $('#spotify-id').val(ui.item.href);
+        $('#image-url').val(ui.item.image.replace("/60/", "/300/"));
         $(this).val(ui.item.label);
       },
       messages: {
@@ -45,7 +53,7 @@
     .data('ui-autocomplete')._renderItem = function(ul, item) {
       return $('<li>')
           .data( "ui-autocomplete-item", item)
-          .append('<a>' + '<span class="ui-autocomplete-icon"><i class="fa fa-plus-circle fa-2x"></i></span>' + '<span class="ui-autocomplete-artist">' + item.artist  + '</span>' + '<span class="ui-autocomplete-divider"><i class="fa fa-minus"></i></span>' + '<span class="ui-autocomplete-album-name">' + item.album_name  + '</span>' + '</a>')
+          .append('<a>' + '<img width="50" src="' + item.image + '" alt="" />' + '<span class="ui-autocomplete-artist">' + item.artist  + '</span>' + '<span class="ui-autocomplete-divider"><i class="fa fa-minus"></i></span>' + '<span class="ui-autocomplete-album-name">' + item.album_name  + '</span>' + '<span class="ui-autocomplete-icon pull-right"><i class="fa fa-plus-circle fa-2x"></i></span>' + '</a>')
           .appendTo(ul);
     };
   });
