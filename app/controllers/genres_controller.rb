@@ -1,10 +1,11 @@
 class GenresController < ApplicationController
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
+  before_action :load_user
 
   # GET /genres
   # GET /genres.json
   def index
-    @genres = Genre.all
+    @genres = Genre.where(:user_id => @user.id)
   end
 
   # GET /genres/1
@@ -66,6 +67,14 @@ class GenresController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_genre
       @genre = Genre.find(params[:id])
+    end
+
+    def load_user
+      if params[:search]
+        @user = User.find(params[:search][:user_id])
+      else
+        @user = User.find(params[:user_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,4 +1,8 @@
 CeeDee::Application.routes.draw do
+  resources :bands
+
+  resources :years
+
   get "search/index"
   get "welcome/index"
   get "home/index"
@@ -6,6 +10,15 @@ CeeDee::Application.routes.draw do
   resources :users do
     resources :albums do
       # get 'search', :on => :collection
+    end
+    resources :genres do
+
+    end
+    resources :years do
+
+    end
+    resources :bands do
+
     end
   end
 

@@ -1,0 +1,7 @@
+= simple_form_for(@year) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :year_value
+    = f.association :user
+  .form-actions
+    = f.button :submit

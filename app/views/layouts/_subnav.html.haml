@@ -1,12 +1,5 @@
 #sub-wrapper
   %ul.subnav-nav
-    - if controller?("songs") && action?("index")
-      %li.selected
-        = link_to "Songs", user_albums_path(@user)
-    - else
-      %li
-        = link_to "Songs", user_albums_path(@user)
-
     - if controller?("albums") && action?("index")
       %li.selected
         = link_to "Albums", user_albums_path(@user)
@@ -14,16 +7,23 @@
       %li
         = link_to "Albums", user_albums_path(@user)
 
-    - if controller?("artists") && action?("index")
+    - if controller?("bands") && action?("index")
       %li.selected
-        = link_to "Artists", user_albums_path(@user)
+        = link_to "Artists", user_bands_path(@user)
     - else
       %li
-        = link_to "Artists", user_albums_path(@user)
+        = link_to "Artists", user_bands_path(@user)
 
     - if controller?("genres") && action?("index")
       %li.selected
-        = link_to "Genres", user_albums_path(@user)
+        = link_to "Genres", user_genres_path(@user)
     - else
       %li
-        = link_to "Genres", user_albums_path(@user)
+        = link_to "Genres", user_genres_path(@user)
+
+    - if controller?("years") && action?("index")
+      %li.selected
+        = link_to "Years", user_years_path(@user)
+    - else
+      %li
+        = link_to "Years", user_years_path(@user)

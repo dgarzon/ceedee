@@ -17,10 +17,15 @@ class Album < ActiveRecord::Base
                          :album_name => response.name,
                          :album_id => Album.last.id + 1)
 
-    genre = Genre.where(:genre_name => genre_val).first
+    genre = Genre.where(:genre_name => genre_val, :user_id => user_id).first
 
     if genre.nil?
-      genre = Genre.create(:genre_id => Genre.last.id + 1, :genre_name => genre_val)
+      if Genre.last.nil?
+        g_id = 1
+      else
+        g_id = Genre.last.id + 1
+      end
+      genre = Genre.create(:genre_id => g_id, :genre_name => genre_val, :user_id => user_id)
       genre.save!
     end
 
@@ -36,10 +41,29 @@ class Album < ActiveRecord::Base
 
     album.comment_id = comment.id
 
-    band = Band.where(:band_name => response.artists[0].name).first
+    year = Year.where(:year_value => response.released, :user_id => user_id).first
+
+    if year.nil?
+      if Year.last.nil?
+        y_id = 1
+      else
+        y_id = Year.last.id + 1
+      end
+      year = Year.create(:year_id => y_id, :year_value => response.released, :user_id => user_id)
+      year.save!
+    end
+
+    album.year_id = year.id
+
+    band = Band.where(:band_name => response.artists[0].name, :user_id => user_id).first
 
     if band.nil?
-      band = Band.create(:band_id => Band.last.id + 1, :band_name => response.artists[0].name)
+      if Band.last.nil?
+        b_id = 1
+      else
+        b_id = Band.last.id + 1
+      end
+      band = Band.create(:band_id => b_id, :band_name => response.artists[0].name, :user_id => user_id)
       band.save!
     end
 

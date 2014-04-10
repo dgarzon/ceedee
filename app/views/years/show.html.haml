@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Year value:
+  = @year.year_value
+%p
+  %strong User:
+  = @year.user
+= link_to 'Edit', edit_year_path(@year)
+|
+\#{link_to 'Back', years_path}

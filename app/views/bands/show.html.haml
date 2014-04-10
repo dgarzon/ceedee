@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Band name:
+  = @band.band_name
+%p
+  %strong User:
+  = @band.user
+= link_to 'Edit', edit_band_path(@band)
+|
+\#{link_to 'Back', bands_path}

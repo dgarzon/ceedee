@@ -1,9 +1,11 @@
 .well
   .row
-    .col-md-4
+    .col-md-12
       %h2.detail-band= @album.band.band_name
       %h3.detail-album= @album.album_name
       %hr
+  .row
+    .col-md-4
       .detail-image
         %img(src="#{@album.image_url}")
       %hr.no-margin-bottom
@@ -19,10 +21,11 @@
             %i.fa.fa-tag
             %pan.detail-track-genre= @album.genre.genre_name
       %hr
-      %i.fa.fa-comment
-        %span.detail-comment-header Comment:
-      .detail-comment-description
-        = @album.comment.comment_description
+      .detail-comment-container
+        %i.fa.fa-comment
+          %span.detail-comment-header Comment:
+        .detail-comment-description
+          = @album.comment.comment_description
       %hr
     .col-md-8
       %table.table.table-condensed
