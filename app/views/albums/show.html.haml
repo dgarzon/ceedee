@@ -1,22 +1,40 @@
-%p
-  %strong Album name:
-  = @album.album_name
-%p
-  %strong User:
-  = @album.user.user_name
-%p
-  %strong Comment:
-  = @album.comment.comment_description
-%p
-  %strong Genre:
-  = @album.genre.genre_name
-%p
-  %strong Rating:
-  = @album.rating.rating_value
-%p
-  %strong Band:
-  = @album.band.band_name
+.well
+  .row
+    .col-md-4
 
-- @album.tracks.each do |track|
-  = track.track_name
-
+      %h2.detail-band= @album.band.band_name
+      %h3.detail-album= @album.album_name
+      %hr
+      .detail-image
+        %img(src="#{@album.image_url}")
+      %hr.no-margin-bottom
+      .detail-subnav-container
+        %ul.detail-subnav.pull-right
+          %li.detail-tracks
+            %i.fa.fa-music
+            %span.detail-track-count= @album.tracks.last.track_number
+          %li.detail-rating
+            %i.fa.fa-star
+            %pan.detail-track-rating= @album.rating.rating_value
+          %li.detail-genre
+            %i.fa.fa-tag
+            %pan.detail-track-genre= @album.genre.genre_name
+      %hr
+      %i.fa.fa-comment
+        %span.detail-comment-header Comment:
+      .detail-comment-description
+        = @album.comment.comment_description
+      %hr
+    .col-md-8
+      %table.table.table-condensed.table-hover
+        %thead
+          %tr
+            %th #
+            %th Name
+            %th Duration
+        %tbody
+          - @album.tracks.each do |track|
+            %tr
+              %td= track.track_number
+              %td= track.track_name
+              %td= to_minutes(track.track_duration)
