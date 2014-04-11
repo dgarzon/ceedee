@@ -3,13 +3,55 @@
 @import "font-awesome";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
+@import "bootstrap";
+
+$azerin: #e74c3c;
 
 body {
   background-color: $clouds;
   color: $gray;
 }
 
-@import "bootstrap";
+.has-error .form-control {
+  border-color: $azerin;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.input-group .form-control:not(:first-child):not(:last-child) {
+  @include border-corner-radius(top, right, 5px);
+  @include border-corner-radius(bottom, right, 5px);
+}
+
+.has-error .form-control:focus {
+  border-color: darken($azerin, 20%);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px lighten($azerin, 20%);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px lighten($azerin, 20%);
+}
+
+.has-error .input-group-addon {
+  color: darken($azerin, 20%);
+  border-color: darken($azerin, 20%);
+  background-color: $azerin;
+}
+
+.has-success .form-control {
+  border-color: $brand-success;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.has-success .form-control:focus {
+  border-color: darken($brand-success, 20%);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px lighten($brand-success, 20%);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px lighten($brand-success, 20%);
+}
+
+.has-success .input-group-addon {
+  color: darken($brand-success, 20%);
+  border-color: darken($brand-success, 20%);
+  background-color: $brand-success;
+}
 
 .navbar {
   margin-bottom: 0px;
@@ -18,8 +60,12 @@ body {
 
 // Container
 .container {
-  margin-top: 60px;
+  // margin-top: 60px;
   padding-top: 20px;
+}
+
+#sub-wrapper {
+  margin-bottom: 30px;
 }
 
 // Navbar
@@ -162,4 +208,47 @@ body {
 
 .fa-tag {
   padding-right: 2px;
+}
+
+// Sidebar
+.affix-top,.affix{
+  position: static;
+}
+
+#sidebar {
+  background-color: white;
+  @include border-radius(5px);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+
+  li {
+    a {
+      &:hover {
+        background-color: $clouds;
+      }
+    }
+  }
+}
+@media (min-width: 979px) {
+
+  #sidebar.affix {
+    position: fixed;
+    top:120px;
+    width:228px;
+  }
+}
+
+#back-link {
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+ul.parsley-error-list {
+    display:none !important;
+}
+
+ul.parsley-error-list li {
+    display:none !important;
 }

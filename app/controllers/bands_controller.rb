@@ -5,60 +5,17 @@ class BandsController < ApplicationController
   # GET /bands
   # GET /bands.json
   def index
-    @bands = Band.where(:user_id => @user.id)
+    @bands = Band.where(:user_id => @user.id).order('band_name ASC')
   end
 
   # GET /bands/1
   # GET /bands/1.json
   def show
-  end
-
-  # GET /bands/new
-  def new
-    @band = Band.new
-  end
-
-  # GET /bands/1/edit
-  def edit
-  end
-
-  # POST /bands
-  # POST /bands.json
-  def create
-    @band = Band.new(band_params)
+    @albums = Album.where(:user_id => @user.id, :band_id => params[:id])
 
     respond_to do |format|
-      if @band.save
-        format.html { redirect_to @band, notice: 'Band was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @band }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @band.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /bands/1
-  # PATCH/PUT /bands/1.json
-  def update
-    respond_to do |format|
-      if @band.update(band_params)
-        format.html { redirect_to @band, notice: 'Band was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @band.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /bands/1
-  # DELETE /bands/1.json
-  def destroy
-    @band.destroy
-    respond_to do |format|
-      format.html { redirect_to bands_url }
-      format.json { head :no_content }
+      format.html
+      format.js
     end
   end
 

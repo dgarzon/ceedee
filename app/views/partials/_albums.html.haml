@@ -1,0 +1,14 @@
+- albums.each do |album|
+  .item
+    = link_to [user, album] do
+      %h2.album-name= album.album_name
+      %h3.album-artist= album.band.band_name
+      .item-image
+        %img(src="#{album.image_url}")
+      %ul.item-subnav.pull-right
+        %li.item-tracks
+          %i.fa.fa-music
+          %span.item-track-count= album.tracks.last.track_number
+        %li.item-rating
+          %i.fa.fa-star
+          %pan.item-track-rating= album.rating.rating_value

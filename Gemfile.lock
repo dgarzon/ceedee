@@ -101,6 +101,12 @@ GEM
     multi_json (1.9.2)
     multi_xml (0.5.5)
     orm_adapter (0.5.0)
+    parsley-rails (1.2.4.0)
+      railties (>= 3.0.0)
+    parsley_simple_form (0.1.2)
+      parsley-rails
+      rails (> 3.2)
+      simple_form
     polyglot (0.3.4)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -193,6 +199,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   meta-spotify
+  parsley_simple_form
   quiet_assets
   rails (= 4.0.0)
   ruby-oci8

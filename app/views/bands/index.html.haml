@@ -1,19 +1,28 @@
-%h1 Listing bands
-%table
-  %thead
-    %tr
-      %th Band name
-      %th User ID
-      %th
-      %th
-      %th
-  %tbody
-    - @bands.each do |band|
-      %tr
-        %td= band.band_name
-        %td= band.user.id
-        %td= link_to 'Show', band
-        %td= link_to 'Edit', edit_band_path(band)
-        %td= link_to 'Destroy', band, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Band', new_band_path
+.row
+  #bands-sidebar.col-md-3
+    %ul#sidebar.nav.nav-stacked.affix
+      - @bands.each do |band|
+        %li
+          = link_to "#{band.band_name}", user_band_path(@user, band), remote: true
+  .col-md-9
+    #bands-albums.packery
+
+:coffee
+  reloadPackery = ->
+    container = document.querySelector(".packery")
+    pckry = new Packery(container,
+      columnWidth: 300
+      gutter: 20
+      isResizeBound: false
+      transitionDuration: "0.8s"
+    )
+
+    $container = $(".packery")
+    gutter = 20 or 0
+    columnWidth = 320
+
+    return
+
+  jQuery ->
+    $(this).bind "ajax:success", ->
+      reloadPackery()

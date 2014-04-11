@@ -5,60 +5,17 @@ class YearsController < ApplicationController
   # GET /years
   # GET /years.json
   def index
-    @years = Year.where(:user_id => @user.id)
+    @years = Year.where(:user_id => @user.id).order('year_value ASC')
   end
 
   # GET /years/1
   # GET /years/1.json
   def show
-  end
-
-  # GET /years/new
-  def new
-    @year = Year.new
-  end
-
-  # GET /years/1/edit
-  def edit
-  end
-
-  # POST /years
-  # POST /years.json
-  def create
-    @year = Year.new(year_params)
+    @albums = Album.where(:user_id => @user.id, :year_id => params[:id])
 
     respond_to do |format|
-      if @year.save
-        format.html { redirect_to @year, notice: 'Year was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @year }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @year.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /years/1
-  # PATCH/PUT /years/1.json
-  def update
-    respond_to do |format|
-      if @year.update(year_params)
-        format.html { redirect_to @year, notice: 'Year was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @year.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /years/1
-  # DELETE /years/1.json
-  def destroy
-    @year.destroy
-    respond_to do |format|
-      format.html { redirect_to years_url }
-      format.json { head :no_content }
+      format.html
+      format.js
     end
   end
 

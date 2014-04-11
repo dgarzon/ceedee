@@ -1,16 +1,28 @@
-%h1 Listing genres
-%table
-  %thead
-    %tr
-      %th ID
-      %th Genre name
-      %th User ID
-      %th
-      %th
-      %th
-  %tbody
-    - @genres.each do |genre|
-      %tr
-        %td= genre.id
-        %td= genre.genre_name
-        %td= genre.user_id
+.row
+  #genres-sidebar.col-md-3
+    %ul#sidebar.nav.nav-stacked.affix
+      - @genres.each do |genre|
+        %li
+          = link_to "#{genre.genre_name}", user_genre_path(@user, genre), remote: true
+  .col-md-9
+    #genres-albums.packery
+
+:coffee
+  reloadPackery = ->
+    container = document.querySelector(".packery")
+    pckry = new Packery(container,
+      columnWidth: 300
+      gutter: 20
+      isResizeBound: false
+      transitionDuration: "0.8s"
+    )
+
+    $container = $(".packery")
+    gutter = 20 or 0
+    columnWidth = 320
+
+    return
+
+  jQuery ->
+    $(this).bind "ajax:success", ->
+      reloadPackery()

@@ -7,7 +7,7 @@ development:
   adapter: oracle_enhanced
   database: ADB
   username: jal2238
-  password: CDfSxxhx
+  password: realmadrid
   pool: 5
   timeout: 5000
 
@@ -18,7 +18,7 @@ test:
   adapter: oracle_enhanced
   database: ADB
   username: jal2238
-  password: CDfSxxhx
+  password: realmadrid
   pool: 5
   timeout: 5000
 
@@ -26,6 +26,6 @@ production:
   adapter: oracle_enhanced
   database: ADB
   username: jal2238
-  password: CDfSxxhx
+  password: realmadrid
   pool: 5
   timeout: 5000

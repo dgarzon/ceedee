@@ -17,6 +17,7 @@
 //= require eventEmitter/EventEmitter.js
 //= require eventie/eventie.js
 //= require imagesloaded/imagesloaded.js
+//= require parsleyjs/parsley.js
 //= require twitter/typeahead
 //= require turbolinks
 //= require_tree .

@@ -5,12 +5,18 @@ class GenresController < ApplicationController
   # GET /genres
   # GET /genres.json
   def index
-    @genres = Genre.where(:user_id => @user.id)
+    @genres = Genre.where(:user_id => @user.id).order('genre_name ASC')
   end
 
   # GET /genres/1
   # GET /genres/1.json
   def show
+    @albums = Album.where(:user_id => @user.id, :genre_id => params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /genres/new

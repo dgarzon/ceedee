@@ -10,6 +10,8 @@ gem 'compass-rails'
 # HAML
 gem 'haml'
 
+gem 'parsley_simple_form'
+
 # Bootstrap 3.1.1 SASS
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'twitter-typeahead-rails'

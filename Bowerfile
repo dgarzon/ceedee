@@ -3,3 +3,4 @@
 
 # asset 'bootstrap'
 asset 'imagesloaded'
+asset 'parsleyjs'

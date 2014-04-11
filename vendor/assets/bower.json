@@ -1,7 +1,7 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "eventEmitter": "latest",
-    "imagesloaded": "latest"
+    "imagesloaded": "latest",
+    "parsleyjs": "latest"
   }
 }

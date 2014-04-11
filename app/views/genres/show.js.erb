@@ -1,0 +1,1 @@
+$('#genres-albums').empty().append("<%= escape_javascript(render :partial => 'partials/albums', :locals => { :albums => @albums, :user => @user } ) %>");

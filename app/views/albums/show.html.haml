@@ -1,6 +1,10 @@
 .well
   .row
     .col-md-12
+      %span.pull-right#back-link
+        = link_to :back do
+          %i.fa.fa-arrow-left
+          Go Back
       %h2.detail-band= @album.band.band_name
       %h3.detail-album= @album.album_name
       %hr
