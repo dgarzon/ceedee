@@ -29,6 +29,8 @@
 
 :coffee
   $ ->
+    $("#new-album").parsley()
+
     $("#spotify-album-search").autocomplete(
       source: (query, process) ->
         $.when($.ajax(url: "http://ws.spotify.com/search/1/album.json?q=" + query.term)).then (data) ->
