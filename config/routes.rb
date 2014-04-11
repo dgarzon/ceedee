@@ -1,7 +1,8 @@
 CeeDee::Application.routes.draw do
   get "registrations/index"
   get "registrations/new"
-  get "registrations/create"
+  post "registrations/create"
+
   resources :bands
 
   resources :years

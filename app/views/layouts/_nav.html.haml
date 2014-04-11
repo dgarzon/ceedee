@@ -30,3 +30,5 @@
             - @users.each do |user|
               %li
                 = link_to "#{user.user_name}", user_albums_path(user)
+            %li.divider{role: "presentation"}
+            %li= link_to "Add User", registrations_new_path
