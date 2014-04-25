@@ -1,11 +1,11 @@
 .well.well-search{"align" => "center"}
   %h1 Add New User
   %hr
-  = parsley_form_for :registration, :url => registrations_create_path, :method => :post, :html => {:id => "new-user"} do |f|
+  = simple_form_for :registration, :url => registrations_create_path, :method => :post, :html => {:id => "new-user"} do |f|
     .input-group.input-group-lg
       %span.input-group-addon
         %i.fa.fa-user
-      = f.text_field :user_name, :placeholder => 'Name', :class => 'form-control input-lg', required: true
+      = f.text_field :user_name, :placeholder => 'Name', :class => 'form-control input-lg', required: true, 'maxlength' => 20
     %hr
     .actions
       = f.submit 'Continue', :class => 'btn btn-primary btn-lg'
