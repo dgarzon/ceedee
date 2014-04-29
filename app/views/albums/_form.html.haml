@@ -12,17 +12,17 @@
     .input-group.input-group-lg
       %span.input-group-addon
         %i.fa.fa-tag
-      = f.text_field :genre_query, :placeholder => 'Genre', :id => 'genre-query', :class => 'form-control input-lg', required: true
+      = f.text_field :genre_query, :placeholder => 'Genre', :id => 'genre-query', :class => 'form-control input-lg', required: true, 'maxlength' => 20
 
     .input-group.input-group-lg
       %span.input-group-addon
         %i.fa.fa-star
-      = f.text_field :rating_query, :placeholder => 'Rating', :id => 'rating-query', :class => 'form-control input-lg', required: true
+      = f.text_field :rating_query, :placeholder => 'Rating', :id => 'rating-query', :class => 'form-control input-lg', required: true, 'maxlength' => 2
 
     .input-group.input-group-lg
       %span.input-group-addon
         %i.fa.fa-comment
-      = f.text_field :comment_query, :placeholder => 'Comment', :id => 'comment-query', :class => 'form-control input-lg', required: true
+      = f.text_field :comment_query, :placeholder => 'Comment', :id => 'comment-query', :class => 'form-control input-lg', required: true, 'maxlength' => 140
     %hr
     .actions
       = f.submit 'Continue', :class => 'btn btn-primary btn-lg', :id => "add-album"
